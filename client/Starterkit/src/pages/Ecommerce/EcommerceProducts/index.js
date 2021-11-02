@@ -565,9 +565,6 @@ class EcommerceProducts extends Component {
                                                 <li class="list-inline-item">
                                                     <Link to="#">Newest</Link>
                                                 </li>
-                                                <li class="list-inline-item">
-                                                    <Link to="#">Discount</Link>
-                                                </li>
                                             </ul>
 
                                             <Row className="g-0">
