@@ -222,14 +222,19 @@ class EcommerceCart extends Component {
                                                         <th>Product Desc</th>
                                                         <th>Price</th>
                                                         <th
+                                                            class="text-center"
                                                             style={{
                                                                 width: '120px',
                                                             }}
                                                         >
                                                             Quantity
                                                         </th>
-                                                        <th>Total</th>
-                                                        <th>Edit</th>
+                                                        <th class="text-center">
+                                                            Total
+                                                        </th>
+                                                        <th class="text-center">
+                                                            Edit
+                                                        </th>
                                                         <th
                                                             className="text-center"
                                                             style={{
@@ -328,7 +333,7 @@ class EcommerceCart extends Component {
                                                                     </div>
                                                                 </td>
 
-                                                                <td>
+                                                                <td class="text-center">
                                                                     ${' '}
                                                                     {
                                                                         product.total
@@ -369,42 +374,119 @@ class EcommerceCart extends Component {
                                                     <tr className="bg-light text-end">
                                                         <th
                                                             scope="row"
-                                                            colSpan="5"
+                                                            colSpan="4"
                                                         >
                                                             Sub Total :
                                                         </th>
 
                                                         <td>$ 1530</td>
+
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                     <tr className="bg-light text-end">
                                                         <th
                                                             scope="row"
-                                                            colSpan="5"
+                                                            colSpan="4"
                                                         >
                                                             Discount :
                                                         </th>
 
                                                         <td>- $ 30</td>
+
+                                                        <td class="text-center">
+                                                            <a
+                                                                class="btn btn-outline-secondary btn-sm edit"
+                                                                title="Edit"
+                                                            >
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                     <tr className="bg-light text-end">
                                                         <th
                                                             scope="row"
-                                                            colSpan="5"
+                                                            colSpan="4"
                                                         >
-                                                            Shipping Charge :
+                                                            Delivery Fee :
                                                         </th>
 
                                                         <td>$ 25</td>
+                                                        <td class="text-center">
+                                                            <a
+                                                                class="btn btn-outline-secondary btn-sm edit"
+                                                                title="Edit"
+                                                            >
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                     <tr className="bg-light text-end">
                                                         <th
                                                             scope="row"
-                                                            colSpan="5"
+                                                            colSpan="4"
+                                                        >
+                                                            Restocking Fee :
+                                                        </th>
+
+                                                        <td>$ 1525</td>
+                                                        <td class="text-center">
+                                                            <a
+                                                                class="btn btn-outline-secondary btn-sm edit"
+                                                                title="Edit"
+                                                            >
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr className="bg-light text-end">
+                                                        <th
+                                                            scope="row"
+                                                            colSpan="4"
+                                                        >
+                                                            Pickup Fee :
+                                                        </th>
+
+                                                        <td>$ 25</td>
+                                                        <td class="text-center">
+                                                            <a
+                                                                class="btn btn-outline-secondary btn-sm edit"
+                                                                title="Edit"
+                                                            >
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr className="bg-light text-end">
+                                                        <th
+                                                            scope="row"
+                                                            colSpan="4"
+                                                        >
+                                                            Setup Fee :
+                                                        </th>
+
+                                                        <td>$ 25</td>
+                                                        <td class="text-center">
+                                                            <a
+                                                                class="btn btn-outline-secondary btn-sm edit"
+                                                                title="Edit"
+                                                            >
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr className="bg-light text-end">
+                                                        <th
+                                                            scope="row"
+                                                            colSpan="4"
                                                         >
                                                             Total :
                                                         </th>
 
-                                                        <td>$ 1525</td>
+                                                        <td>$ 25</td>
+                                                        <td class="text-center"></td>
                                                     </tr>
                                                 </tbody>
                                             </Table>
@@ -430,47 +512,27 @@ class EcommerceCart extends Component {
                                                     <i class="ri-arrow-right-line ms-2"></i>
                                                 </button>
                                             </a>
-
-                                            <div class="p-3">
-                                                <p>
-                                                    A warning message when user
-                                                    declines
-                                                </p>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-primary waves-effect waves-light"
-                                                    id="sa-warning"
-                                                >
-                                                    Click me
-                                                </button>
-                                            </div>
-
-                                            <div
-                                                class="button-items"
-                                                style={{ float: 'right' }}
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-danger waves-effect waves-light"
-                                                    id="sa-warning"
-                                                >
-                                                    <i class="ri-close-line align-middle me-2"></i>{' '}
-                                                    Decline
-                                                </button>
-
-                                                <a href="ecommerce-return-invoice.html">
-                                                    <button
-                                                        type="button"
-                                                        class="btn btn-success waves-effect waves-light"
-                                                    >
-                                                        <i class="ri-check-line align-middle me-2"></i>{' '}
-                                                        Approve
-                                                    </button>
-                                                </a>
-                                            </div>
                                         </div>
-                                        <br />
                                     </CardBody>
+
+                                    <div class="p-3" style={{ align: 'right' }}>
+                                        <button
+                                            type="button"
+                                            class="btn btn-danger waves-effect waves-light"
+                                            id="sa-warning"
+                                        >
+                                            <i class="ri-close-line align-middle me-2"></i>{' '}
+                                            Decline
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-success waves-effect waves-light"
+                                        >
+                                            <i class="ri-check-line align-middle me-2"></i>{' '}
+                                            Approve
+                                        </button>
+                                    </div>
                                 </Card>
                             </Col>
                         </Row>
