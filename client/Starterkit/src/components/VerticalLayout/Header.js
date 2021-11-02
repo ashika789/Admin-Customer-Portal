@@ -25,9 +25,6 @@ import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu";
 //Import i18n
 import { withNamespaces } from "react-i18next";
 
-//Import Megamenu
-import MegaMenu from "./MegaMenu";
-
 // Redux Store
 import { toggleRightSidebar } from "../../store/actions";
 
@@ -137,7 +134,7 @@ class Header extends Component {
                                 </div>
                             </Form>
 
-                            <MegaMenu />
+                        
                         </div>
 
                         <div className="d-flex">
@@ -162,58 +159,20 @@ class Header extends Component {
                                 </div>
                             </div>
 
-                            <LanguageDropdown />
+                          
+                             <Link to="/ecommerce-products">{this.props.t('')}
+                            <button type="button" class="btn header-item waves-effect">
 
-                            <Dropdown isOpen={this.state.isSocialPf} toggle={() => this.setState({ isSocialPf: !this.state.isSocialPf })} className="d-none d-lg-inline-block ms-1">
-                                <DropdownToggle tag="button" className="btn header-item noti-icon waves-effect">
-                                    <i className="ri-apps-2-line"></i>
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu-lg dropdown-menu-end">
-                                    <div className="px-lg-2">
-                                        <Row className="g-0">
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={github} alt="Github" />
-                                                    <span>{this.props.t('GitHub')}</span>
-                                                </Link>
-                                            </Col>
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={bitbucket} alt="bitbucket" />
-                                                    <span>{this.props.t('Bitbucket')}</span>
-                                                </Link>
-                                            </Col>
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={dribbble} alt="dribbble" />
-                                                    <span>{this.props.t('Dribbble')}</span>
-                                                </Link>
-                                            </Col>
-                                        </Row>
+                                 <button type="button" class="btn btn-primary waves-effect waves-light">
+                                               Place New Order<i class="align-middle ms-2"></i> 
+                                 
+                                </button>
+                            </button>
+                            </Link>
 
-                                        <Row className="g-0">
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={dropbox} alt="dropbox" />
-                                                    <span>{this.props.t('Dropbox')}</span>
-                                                </Link>
-                                            </Col>
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={mail_chimp} alt="mail_chimp" />
-                                                    <span>{this.props.t('Mail Chimp')}</span>
-                                                </Link>
-                                            </Col>
-                                            <Col>
-                                                <Link className="dropdown-icon-item" to="#">
-                                                    <img src={slack} alt="slack" />
-                                                    <span>{this.props.t('Slack')}</span>
-                                                </Link>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                </DropdownMenu>
-                            </Dropdown>
+                        
+
+                            
 
                             <div className="dropdown d-none d-lg-inline-block ms-1">
                                 <Button color="none" type="button" className="header-item noti-icon waves-effect" onClick={this.toggleFullscreen}>
