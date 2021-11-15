@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import {
     Card,
     CardBody,
@@ -9,32 +9,30 @@ import {
     Col,
     Container,
     Input,
-    Label,
     Pagination,
     PaginationItem,
     PaginationLink,
     Collapse,
     Row,
-} from 'reactstrap'
+} from 'reactstrap';
 
-import { isEmpty, map, size } from 'lodash'
+import { isEmpty, map, size } from 'lodash';
 
 // RangeSlider
-import Nouislider from 'nouislider-react'
-import 'nouislider/distribute/nouislider.css'
+import 'nouislider/distribute/nouislider.css';
 
 //Import Breadcrumb
-import Breadcrumbs from '../../../components/Common/Breadcrumb'
+import Breadcrumbs from '../../../components/Common/Breadcrumb';
 
 //Import data
-import { discountData, productsData } from '../../../common/data'
+import { discountData, productsData } from '../../../common/data';
 
 //Import actions
-import { getProducts } from '../../../store/e-commerce/actions'
+import { getProducts } from '../../../store/e-commerce/actions';
 
 class EcommerceProducts extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             FilterClothes: [
                 { id: 1, name: 'T-shirts', link: '#' },
@@ -60,31 +58,31 @@ class EcommerceProducts extends Component {
             },
             page: 1,
             totalPage: 5, //replace this with total pages of data
-        }
-        this.toggleTab = this.toggleTab.bind(this)
-        this.filtercategorytoggle1 = this.filtercategorytoggle1.bind(this)
-        this.filtercategorytoggle2 = this.filtercategorytoggle2.bind(this)
-        this.filtercategorytoggle3 = this.filtercategorytoggle3.bind(this)
-        this.filtercategorytoggle4 = this.filtercategorytoggle4.bind(this)
-        this.onSelectRating = this.onSelectRating.bind(this)
+        };
+        this.toggleTab = this.toggleTab.bind(this);
+        this.filtercategorytoggle1 = this.filtercategorytoggle1.bind(this);
+        this.filtercategorytoggle2 = this.filtercategorytoggle2.bind(this);
+        this.filtercategorytoggle3 = this.filtercategorytoggle3.bind(this);
+        this.filtercategorytoggle4 = this.filtercategorytoggle4.bind(this);
+        this.onSelectRating = this.onSelectRating.bind(this);
     }
 
     componentDidMount() {
-        const { products, onGetProducts } = this.props
-        this.setState({ products })
-        onGetProducts()
-        this.setState({ discountData })
+        const { products, onGetProducts } = this.props;
+        this.setState({ products });
+        onGetProducts();
+        this.setState({ discountData });
     }
 
     // eslint-disable-next-line no-unused-vars
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { products } = this.props
+        const { products } = this.props;
         if (
             isEmpty(prevProps.products) &&
             !isEmpty(products) &&
             size(products) !== size(prevProps.products)
         ) {
-            this.setState({ products })
+            this.setState({ products });
         }
     }
 
@@ -94,7 +92,7 @@ class EcommerceProducts extends Component {
             isCategoryOpen2: false,
             isCategoryOpen3: false,
             isCategoryOpen4: false,
-        })
+        });
     }
 
     filtercategorytoggle2() {
@@ -103,7 +101,7 @@ class EcommerceProducts extends Component {
             isCategoryOpen2: !this.state.col2,
             isCategoryOpen3: false,
             isCategoryOpen4: false,
-        })
+        });
     }
 
     filtercategorytoggle3() {
@@ -112,7 +110,7 @@ class EcommerceProducts extends Component {
             isCategoryOpen2: false,
             isCategoryOpen3: !this.state.col3,
             isCategoryOpen4: false,
-        })
+        });
     }
 
     filtercategorytoggle4() {
@@ -121,23 +119,23 @@ class EcommerceProducts extends Component {
             isCategoryOpen2: false,
             isCategoryOpen3: false,
             isCategoryOpen4: !this.state.col4,
-        })
+        });
     }
 
     toggleTab(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
                 activeTab: tab,
-            })
+            });
         }
     }
 
     onSelectDiscount = (e) => {
-        const { value, checked } = e.target
+        const { value, checked } = e.target;
         const {
             filters,
             filters: { discount },
-        } = this.state
+        } = this.state;
         this.setState(
             {
                 filters: {
@@ -148,27 +146,27 @@ class EcommerceProducts extends Component {
                 },
             },
             () => {
-                this.onFilterProducts(value, checked)
+                this.onFilterProducts(value, checked);
             }
-        )
-    }
+        );
+    };
 
     onFilterProducts = (value, checked) => {
         const {
             filters: { discount },
-        } = this.state
-        let filteredProducts = productsData
+        } = this.state;
+        let filteredProducts = productsData;
         if (!!checked && parseInt(value) === 0) {
             filteredProducts = productsData.filter(
                 (product) => product.offer < 10
-            )
+            );
         } else if (discount.length > 0) {
             filteredProducts = productsData.filter(
                 (product) => product.offer >= Math.min(...discount)
-            )
+            );
         }
-        this.setState({ products: filteredProducts })
-    }
+        this.setState({ products: filteredProducts });
+    };
 
     onUpdate = (render, handle, value) => {
         this.setState({
@@ -176,8 +174,8 @@ class EcommerceProducts extends Component {
                 (product) =>
                     product.newPrice >= value[0] && product.newPrice <= value[1]
             ),
-        })
-    }
+        });
+    };
 
     /*
   on change rating checkbox method
@@ -185,50 +183,50 @@ class EcommerceProducts extends Component {
     onChangeRating = (value) => {
         this.setState({
             products: productsData.filter((product) => product.rating >= value),
-        })
+        });
 
-        var modifiedRating = [...this.state.ratingvalues]
-        modifiedRating.push(value)
-        this.setState({ ratingvalues: modifiedRating })
-    }
+        var modifiedRating = [...this.state.ratingvalues];
+        modifiedRating.push(value);
+        this.setState({ ratingvalues: modifiedRating });
+    };
 
     onSelectRating = (value) => {
         this.setState({
             products: productsData.filter(
                 (product) => product.rating === value
             ),
-        })
-    }
+        });
+    };
 
     onUncheckMark = (value) => {
-        var modifiedRating = [...this.state.ratingvalues]
-        const modifiedData = (modifiedRating || []).filter((x) => x !== value)
+        var modifiedRating = [...this.state.ratingvalues];
+        const modifiedData = (modifiedRating || []).filter((x) => x !== value);
         /*
     find min values
     */
-        var filteredProducts = productsData
+        var filteredProducts = productsData;
         if (modifiedData && modifiedData.length && value !== 1) {
-            var minValue = Math.min(...modifiedData)
+            var minValue = Math.min(...modifiedData);
             if (minValue && minValue !== Infinity) {
                 filteredProducts = productsData.filter(
                     (product) => product.rating >= minValue
-                )
+                );
 
-                this.setState({ ratingvalues: modifiedData })
+                this.setState({ ratingvalues: modifiedData });
             }
         } else {
-            filteredProducts = productsData
+            filteredProducts = productsData;
         }
-        this.setState({ products: filteredProducts })
-    }
+        this.setState({ products: filteredProducts });
+    };
 
     handlePageClick = (page) => {
-        this.setState({ page })
-    }
+        this.setState({ page });
+    };
 
     render() {
-        const { history } = this.props
-        const { discountData, products, page, totalPage } = this.state
+        const { history } = this.props;
+        const { products, page, totalPage } = this.state;
         return (
             <React.Fragment>
                 <div className="page-content">
@@ -749,24 +747,24 @@ class EcommerceProducts extends Component {
                     </Container>
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
 
 EcommerceProducts.propTypes = {
     products: PropTypes.array,
     onGetProducts: PropTypes.func,
-}
+};
 
 const mapStateToProps = (state) => ({
     products: state.Ecommerce.products,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
     onGetProducts: () => dispatch(getProducts()),
-})
+});
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(EcommerceProducts))
+)(withRouter(EcommerceProducts));

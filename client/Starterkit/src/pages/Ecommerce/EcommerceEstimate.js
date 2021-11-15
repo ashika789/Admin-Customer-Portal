@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { map, isEmpty, size } from 'lodash'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { map, isEmpty, size } from 'lodash';
+import PropTypes from 'prop-types';
 import {
     Button,
     Card,
@@ -12,75 +12,75 @@ import {
     InputGroup,
     Row,
     Table,
-} from 'reactstrap'
-import { Link, withRouter } from 'react-router-dom'
+} from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom';
 
 //Import Breadcrumb
-import Breadcrumbs from '../../components/Common/Breadcrumb'
+import Breadcrumbs from '../../components/Common/Breadcrumb';
 
 //Import Product Images
-import { getCartData } from '../../store/actions'
+import { getCartData } from '../../store/actions';
 
 class EcommerceCart extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             productList: [],
             breadcrumbItems: [
                 { title: 'Ecommerce', link: '#' },
                 { title: 'Estimate', link: '#' },
             ],
-        }
+        };
     }
 
     componentDidMount() {
         const {
             cartData: { products },
             onGetCartData,
-        } = this.props
-        onGetCartData()
-        this.setState({ productList: products })
+        } = this.props;
+        onGetCartData();
+        this.setState({ productList: products });
     }
 
     componentDidUpdate(prevProps) {
         const {
             cartData: { products },
-        } = this.props
+        } = this.props;
         if (
             !isEmpty(products) &&
             size(products) !== size(prevProps.cartData.products)
         ) {
-            this.setState({ productList: products })
+            this.setState({ productList: products });
         }
     }
 
     removeCartItem = (id) => {
-        let productList = this.state.productList
+        let productList = this.state.productList;
         const filtered = productList.filter(function (item) {
-            return item.id !== id
-        })
+            return item.id !== id;
+        });
 
-        this.setState({ productList: filtered })
-    }
+        this.setState({ productList: filtered });
+    };
 
     countUP = (id, prev_data_attr) => {
         this.setState({
             productList: this.state.productList.map((p) =>
                 p.id === id ? { ...p, data_attr: prev_data_attr + 1 } : p
             ),
-        })
-    }
+        });
+    };
 
     countDown = (id, prev_data_attr) => {
         this.setState({
             productList: this.state.productList.map((p) =>
                 p.id === id ? { ...p, data_attr: prev_data_attr - 1 } : p
             ),
-        })
-    }
+        });
+    };
 
     render() {
-        const { productList } = this.state
+        const { productList } = this.state;
 
         return (
             <React.Fragment>
@@ -299,7 +299,7 @@ class EcommerceCart extends Component {
                                                                                         this.countDown(
                                                                                             product.id,
                                                                                             product.data_attr
-                                                                                        )
+                                                                                        );
                                                                                     }}
                                                                                 >
                                                                                     -
@@ -323,7 +323,7 @@ class EcommerceCart extends Component {
                                                                                         this.countUP(
                                                                                             product.id,
                                                                                             product.data_attr
-                                                                                        )
+                                                                                        );
                                                                                     }}
                                                                                 >
                                                                                     +
@@ -539,24 +539,24 @@ class EcommerceCart extends Component {
                     </Container>
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
 
 EcommerceCart.propTypes = {
     cartData: PropTypes.any,
     onGetCartData: PropTypes.func,
-}
+};
 
 const mapStateToProps = (state) => ({
     cartData: state.Ecommerce.cartData,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
     onGetCartData: () => dispatch(getCartData()),
-})
+});
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(EcommerceCart))
+)(withRouter(EcommerceCart));

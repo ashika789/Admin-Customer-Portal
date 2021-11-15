@@ -1,14 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import {
     Container,
     Row,
     Col,
-    Table,
     Input,
-    Nav,
-    NavItem,
-    NavLink,
     TabContent,
     TabPane,
     Card,
@@ -16,22 +12,20 @@ import {
     Label,
     CardBody,
     CardTitle,
-} from 'reactstrap'
+} from 'reactstrap';
 
-import { Link } from 'react-router-dom'
-
-import classnames from 'classnames'
+import { Link } from 'react-router-dom';
 
 //Import Breadcrumb
-import Breadcrumbs from '../../components/Common/Breadcrumb'
+import Breadcrumbs from '../../components/Common/Breadcrumb';
 
 //Import Images
-import img1 from '../../assets/images/product/img-1.png'
-import img6 from '../../assets/images/product/img-6.png'
+import img1 from '../../assets/images/product/img-1.png';
+import img6 from '../../assets/images/product/img-6.png';
 
 class EcommerceCheckout extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             orderSummary: [
                 {
@@ -55,22 +49,22 @@ class EcommerceCheckout extends Component {
                 { title: 'Ecommerce', link: '#' },
                 { title: 'Event Info', link: '#' },
             ],
-        }
-        this.toggleTab = this.toggleTab.bind(this)
-        this.handleSelectGroup = this.handleSelectGroup.bind(this)
+        };
+        this.toggleTab = this.toggleTab.bind(this);
+        this.handleSelectGroup = this.handleSelectGroup.bind(this);
     }
 
     toggleTab(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
                 activeTab: tab,
-            })
+            });
         }
     }
 
     handleSelectGroup = (selectedGroup) => {
-        this.setState({ selectedGroup })
-    }
+        this.setState({ selectedGroup });
+    };
 
     render() {
         return (
@@ -527,7 +521,7 @@ class EcommerceCheckout extends Component {
                                                                 this.state
                                                                     .activeTab -
                                                                     1
-                                                            )
+                                                            );
                                                         }}
                                                     >
                                                         Previous
@@ -548,7 +542,7 @@ class EcommerceCheckout extends Component {
                                                                 this.state
                                                                     .activeTab +
                                                                     1
-                                                            )
+                                                            );
                                                         }}
                                                     >
                                                         Next
@@ -563,8 +557,8 @@ class EcommerceCheckout extends Component {
                     </Container>
                 </div>
             </React.Fragment>
-        )
+        );
     }
 }
 
-export default EcommerceCheckout
+export default EcommerceCheckout;
